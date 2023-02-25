@@ -28,7 +28,7 @@ jobs:
         run: export PATH="./node_modules/.bin:$PATH"
 
       - name: Generate docs
-        run: doc:generate
+        run: npm run doc:generate
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
