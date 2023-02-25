@@ -20,6 +20,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+  
+      - name: Set up Git
+        uses: actions/setup-git@v2.4.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          email: felipeflohrlol@gmail.com
+          name: Felipe Matheus Flohr
 
       - name: Install Dependencies
         run: npm install
