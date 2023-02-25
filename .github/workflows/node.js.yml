@@ -19,10 +19,11 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-  
+
       - name: Set up Git
         uses: actions/setup-git@v2.4.3
         with:
