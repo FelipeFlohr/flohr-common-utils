@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
   
       - name: Set up Git
         uses: actions/setup-git@v2.4.3
