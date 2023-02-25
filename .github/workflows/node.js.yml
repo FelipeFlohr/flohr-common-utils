@@ -24,6 +24,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Add node_modules/.bin to PATH
+        run: export PATH="./node_modules/.bin:$PATH"
+
       - name: Generate docs
         run: doc:generate
 
