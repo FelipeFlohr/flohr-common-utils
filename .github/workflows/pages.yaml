@@ -9,34 +9,26 @@ on:
   pull_request:
     branches: [ "master" ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      - name: Checkout code
+      - name: Checkout repo using git
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - run: npm ci
-
-      - name: Set up Git
-        uses: actions/setup-git@v2.4.3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          email: felipeflohrlol@gmail.com
-          name: Felipe Matheus Flohr
 
       - name: Install Dependencies
         run: npm install
@@ -46,15 +38,13 @@ jobs:
 
       - name: Generate docs
         run: npm run doc:generate
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: gh-pages
-          folder: docs
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        id: deployment
+        uses: actions/deploy-pages@v1
