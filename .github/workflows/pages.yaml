@@ -4,76 +4,76 @@
 name: Project docs to GitHub Pages
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    push:
+        branches: ["master"]
+    pull_request:
+        branches: ["master"]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    steps:
-      - name: Checkout repo using git
-        uses: actions/checkout@v3
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        steps:
+            - name: Checkout repo using git
+              uses: actions/checkout@v3
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+            - name: Set up Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
 
-      - name: Install Dependencies
-        run: npm install
+            - name: Install Dependencies
+              run: npm install
 
-      - name: Add node_modules/.bin to PATH
-        run: export PATH="./node_modules/.bin:$PATH"
+            - name: Add node_modules/.bin to PATH
+              run: export PATH="./node_modules/.bin:$PATH"
 
-      - name: Generate docs
-        run: npm run doc:generate
+            - name: Generate docs
+              run: npm run doc:generate
 
-      - name: Create _site folder
-        run: mkdir _site
+            - name: Create _site folder
+              run: mkdir _site
 
-      - name: Move docs to  _site
-        run: mv docs/* _site/
+            - name: Move docs to  _site
+              run: mv docs/* _site/
 
-      - name: Upload doc artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: github-pages
-          path: _site
+            - name: Upload doc artifact
+              uses: actions/upload-artifact@v3
+              with:
+                  name: github-pages
+                  path: _site
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Download doc artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: github-pages
-          path: github-pages
+            - name: Cache node_modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Download doc artifact
+              uses: actions/download-artifact@v2
+              with:
+                  name: github-pages
+                  path: github-pages
 
-      - name: i swear to god
-        run: cd github-pages && ls -a
+            - name: Configure git to trust the workspace despite the different owner
+              run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Deploy GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: docs
-          folder: github-pages
+            - name: Deploy GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4.4.1
+              with:
+                  branch: docs
+                  folder: github-pages
