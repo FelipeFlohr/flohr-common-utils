@@ -74,3 +74,4 @@ jobs:
               with:
                   branch: docs
                   folder: github-pages
+                  token: ${{ secrets.TOKEN }}
