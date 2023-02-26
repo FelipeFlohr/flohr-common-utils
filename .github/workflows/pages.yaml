@@ -60,7 +60,7 @@ jobs:
       - name: Download doc artifact
         uses: actions/download-artifact@v2
         with:
-          name: doc-artifact
+          name: ${{ github.workspace }}
 
       - name: Deploy to GitHub Pages
         id: doc-artifact
