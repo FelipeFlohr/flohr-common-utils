@@ -69,7 +69,8 @@ jobs:
           name: github-pages
           path: github-pages
 
-      - name: Deploy GitHub Pages site
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@3.8.0
         with:
-          path: github-pages
+          branch: gh-pages
+          folder: site/_site
