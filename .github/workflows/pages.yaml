@@ -38,6 +38,17 @@ jobs:
 
       - name: Generate docs
         run: npm run doc:generate
+
+      - name: Upload doc artifact
+        with:
+          name: doc-artifact
+          path: docs
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
