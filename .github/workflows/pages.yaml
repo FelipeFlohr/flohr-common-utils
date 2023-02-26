@@ -46,7 +46,8 @@ jobs:
               with:
                   branch: docs
                   folder: docs
-                  token: ${{ secrets.TOKEN }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  verbose: true
 
             - name: Cache node_modules
               uses: actions/cache@v2
