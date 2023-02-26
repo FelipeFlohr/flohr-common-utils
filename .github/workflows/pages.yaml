@@ -60,9 +60,9 @@ jobs:
       - name: Download doc artifact
         uses: actions/download-artifact@v2
         with:
-          name: doc-artifact
+          name: github-pages
           path: doc-artifact
 
-      - name: Deploy to GitHub Pages
-        id: doc-artifact
-        uses: actions/deploy-pages@v1
+      - name: Deploy GitHub Pages site
+        id: deployment
+        uses: actions/deploy-pages@v1.2.4
