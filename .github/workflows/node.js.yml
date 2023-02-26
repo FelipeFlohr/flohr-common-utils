@@ -20,9 +20,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: npm ci
 
       - name: Set up Git
         uses: actions/setup-git@v2.4.3
