@@ -40,6 +40,7 @@ jobs:
         run: npm run doc:generate
 
       - name: Upload doc artifact
+        uses: actions/upload-artifact@v3
         with:
           name: doc-artifact
           path: docs
