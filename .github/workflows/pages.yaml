@@ -39,11 +39,17 @@ jobs:
       - name: Generate docs
         run: npm run doc:generate
 
+      - name: Create _site folder
+        run: mkdir _site
+
+      - name: Move docs to  _site
+        run: mv docs/* _site/
+
       - name: Upload doc artifact
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: docs
+          path: _site
 
       - name: Cache node_modules
         uses: actions/cache@v2
