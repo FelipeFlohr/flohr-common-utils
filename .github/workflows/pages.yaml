@@ -15,7 +15,7 @@ permissions:
     id-token: write
 
 jobs:
-    build-deploy:
+    deploy:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -47,7 +47,6 @@ jobs:
                   branch: docs
                   folder: docs
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  verbose: true
 
             - name: Cache node_modules
               uses: actions/cache@v2
