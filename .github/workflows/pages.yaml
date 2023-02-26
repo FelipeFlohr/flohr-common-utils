@@ -10,7 +10,7 @@ on:
         branches: ["master"]
 
 permissions:
-    contents: read
+    contents: write
     pages: write
     id-token: write
 
@@ -68,9 +68,6 @@ jobs:
               with:
                   name: github-pages
                   path: github-pages
-
-            - name: Configure git to trust the workspace despite the different owner
-              run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
             - name: Deploy GitHub Pages
               uses: JamesIves/github-pages-deploy-action@v4.4.1
