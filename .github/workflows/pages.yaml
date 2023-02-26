@@ -42,7 +42,7 @@ jobs:
       - name: Upload doc artifact
         uses: actions/upload-artifact@v3
         with:
-          name: doc-artifact
+          name: github-pages
           path: docs
 
       - name: Cache node_modules
@@ -61,7 +61,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: github-pages
-          path: doc-artifact
+          path: github-pages
 
       - name: Deploy GitHub Pages site
         id: deployment
