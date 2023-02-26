@@ -25,10 +25,11 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Node
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-        run: npm ci
+
+      - run: npm ci
 
       - name: Set up Git
         uses: actions/setup-git@v2.4.3
