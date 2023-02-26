@@ -65,3 +65,5 @@ jobs:
 
       - name: Deploy GitHub Pages site
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: github-pages
