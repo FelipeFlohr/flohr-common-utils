@@ -70,7 +70,7 @@ jobs:
           path: github-pages
 
       - name: Deploy GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.8.0
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
           folder: site/_site
