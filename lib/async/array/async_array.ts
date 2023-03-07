@@ -66,18 +66,13 @@ export default class AsyncArray<T> {
      * @author Felipe Matheus Flohr
      */
     public async map<U>(callback: (value: T, index: number, array: T[]) => Promise<U>, parallel = true): Promise<U[]> {
-        if (parallel) {
-            const promises = this.array.map(callback);
-            return await Promise.all(promises);
-        }
+        const result: U[] = [];
 
-        const resArray: U[] = [];
-        for (let i = 0; i < this.array.length; i++) {
-            const item = this.array[i];
-            const res = await callback(item, i, this.array);
-            resArray.push(res);
-        }
+        const thisAsync = new AsyncArray(this.array);
+        await thisAsync.forEach(async (item, index, array) => {
+            result.push(await callback(item, index, array));
+        }, parallel);
 
-        return resArray;
+        return result;
     }
 }
