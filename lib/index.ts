@@ -4,6 +4,7 @@ import ReduceWithoutInitialValueError, {
 } from "./async/array/errors/reduce_without_initial_value";
 import Sleep from "./async/sleep/sleep";
 import EsLintConfigs from "./linter/eslint_configs";
+import StringUtils from "./types/string_utils";
 
 /**
  * Entrypoint of the library. Contains only
@@ -17,4 +18,5 @@ export {
     ReduceWithoutInitialValueError,
     UndefinedInitialValueCause,
     Sleep,
+    StringUtils
 };
