@@ -1,6 +1,11 @@
-import AsyncArray from "./async/array/async_array";
-import BrowserSleep from "./async/sleep/browser_sleep";
-import NodeSleep from "./async/sleep/node_sleep";
+import AsyncArray, {
+    AsyncReduceConfig,
+    AsyncReduceConfigEmptyFalse,
+    AsyncReduceConfigEmptyTrue,
+} from "./async/array/async_array";
+import ReduceWithoutInitialValueError, {
+    UndefinedInitialValueCause,
+} from "./async/array/errors/reduce_without_initial_value";
 import Sleep from "./async/sleep/sleep";
 import EsLintConfigs from "./linter/eslint_configs";
 
@@ -13,7 +18,10 @@ import EsLintConfigs from "./linter/eslint_configs";
 export {
     EsLintConfigs,
     AsyncArray,
+    AsyncReduceConfig,
+    AsyncReduceConfigEmptyTrue,
+    AsyncReduceConfigEmptyFalse,
+    ReduceWithoutInitialValueError,
+    UndefinedInitialValueCause,
     Sleep,
-    NodeSleep,
-    BrowserSleep
 };
