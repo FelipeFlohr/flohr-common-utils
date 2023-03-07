@@ -1,6 +1,6 @@
 import { Sleep } from "../../../lib";
 
-describe("Node-suited version of the \"Sleep\" class", () => {
+describe("Tests the \"Sleep\" class", () => {
     it("should wait for three seconds", async () => {
         const startDate = new Date().getTime();
         await Sleep.sleep(3000);
