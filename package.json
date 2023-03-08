@@ -8,7 +8,7 @@
     },
     "scripts": {
         "test": "jest",
-        "compile": "tsc",
+        "compile": "gulp",
         "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts .",
         "doc:generate": "typedoc --out docs lib/index.ts",
         "publish:github": "npm run compile && cd dist && npm publish"
@@ -31,7 +31,7 @@
     "devDependencies": {
         "@types/eslint": "^8.21.1",
         "@types/jest": "^29.4.0",
-        "@types/node": "^18.14.1",
+        "@types/node": "^18.14.6",
         "@typescript-eslint/eslint-plugin": "^5.53.0",
         "@typescript-eslint/parser": "^5.53.0",
         "eslint": "^8.34.0",
@@ -40,6 +40,8 @@
         "eslint-plugin-n": "^15.6.1",
         "eslint-plugin-promise": "^6.1.1",
         "eslint-plugin-react": "^7.32.2",
+        "gulp": "^4.0.2",
+        "gulp-typescript": "^6.0.0-alpha.1",
         "jest": "^29.4.3",
         "ts-jest": "^29.0.5",
         "typedoc": "^0.23.25",
