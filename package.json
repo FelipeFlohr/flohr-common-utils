@@ -4,7 +4,9 @@
     "description": "Utility classes for use in personal projects",
     "main": "dist/index.js",
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@FelipeFlohr"
+        "registry": "https://npm.pkg.github.com/@FelipeFlohr",
+        "access": "public",
+        "name": "flohr-common-utils"
     },
     "scripts": {
         "test": "jest",
