@@ -10,7 +10,8 @@
         "test": "jest",
         "compile": "tsc",
         "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts .",
-        "doc:generate": "typedoc --out docs lib/index.ts"
+        "doc:generate": "typedoc --out docs lib/index.ts",
+        "publish:github": "npm run compile && cd dist && npm publish"
     },
     "repository": {
         "type": "git",
