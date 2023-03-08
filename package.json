@@ -3,8 +3,9 @@
     "version": "1.0.0",
     "description": "Utility classes for use in personal projects",
     "main": "dist/index.js",
-    "private": true,
-    "module": "true",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/@FelipeFlohr"
+    },
     "scripts": {
         "test": "jest",
         "compile": "tsc",
