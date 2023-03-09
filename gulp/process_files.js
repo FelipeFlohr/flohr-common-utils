@@ -5,7 +5,7 @@ const gulp = require("gulp");
 function processJson() {
     return gulp
         .src("lib/**/*.json", { allowEmpty: true })
-        .pipe(gulp.dest("dist/lib"));
+        .pipe(gulp.dest("dist"));
 }
 
 function processPackageFiles() {

@@ -1,6 +1,6 @@
 {
     "name": "@felipeflohr/flohr-common-utils",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Utility classes for use in personal projects",
     "main": "dist/lib/index.js",
     "publishConfig": {
