@@ -35,6 +35,7 @@ jobs:
             - run: npm ci
             - run: npm run prepublish:github
             - run: cd dist
+            - run: ls -a
             - run: npm publish
               env:
                   TOKEN: ${{secrets.TOKEN}}
