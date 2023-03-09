@@ -36,6 +36,9 @@ jobs:
               run: npm ci
             - name: Prepublish compile
               run: npm run prepublish:github
+            - name: LS test
+              working-directory: ./dist
+              run: ls -a
             - name: Publish
               working-directory: ./dist
               run: npm publish
