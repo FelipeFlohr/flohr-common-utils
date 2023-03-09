@@ -1,12 +1,11 @@
 {
-    "name": "flohr-common-utils",
+    "name": "@FelipeFlohr/flohr-common-utils",
     "version": "1.0.0",
     "description": "Utility classes for use in personal projects",
     "main": "dist/index.js",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/@FelipeFlohr",
-        "access": "public",
-        "name": "flohr-common-utils"
+        "access": "public"
     },
     "scripts": {
         "test": "jest",
