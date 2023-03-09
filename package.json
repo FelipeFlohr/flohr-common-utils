@@ -1,5 +1,5 @@
 {
-    "name": "@FelipeFlohr/flohr-common-utils",
+    "name": "@felipeflohr/flohr-common-utils",
     "version": "1.0.0",
     "description": "Utility classes for use in personal projects",
     "main": "dist/index.js",
