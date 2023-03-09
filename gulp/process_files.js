@@ -10,7 +10,7 @@ function processJson() {
 
 function processPackageFiles() {
     return gulp
-        .src(["package.json", "LICENSE", "README.md"], { allowEmpty: true })
+        .src(["package.json", "LICENSE", "README.md", ".npmrc"], { allowEmpty: true })
         .pipe(gulp.dest("dist"));
 }
 
