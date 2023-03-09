@@ -1,6 +1,6 @@
 {
     "name": "@felipeflohr/flohr-common-utils",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Utility classes for use in personal projects",
     "main": "dist/lib/index.js",
     "publishConfig": {
@@ -12,7 +12,9 @@
         "compile": "gulp",
         "lint": "eslint --fix --ignore-path .gitignore --ext .js,.ts .",
         "doc:generate": "typedoc --out docs lib/index.ts",
-        "publish:github": "npm run compile && cd dist && npm publish"
+        "publish:local": "npm run compile && cd dist && npm publish",
+        "prepublish:github": "npm run compile",
+        "publish:github": "npm publish"
     },
     "repository": {
         "type": "git",
