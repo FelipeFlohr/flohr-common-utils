@@ -2,7 +2,7 @@
     "name": "@felipeflohr/flohr-common-utils",
     "version": "1.0.0",
     "description": "Utility classes for use in personal projects",
-    "main": "dist/index.js",
+    "main": "dist/lib/index.js",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/@FelipeFlohr",
         "access": "public"
