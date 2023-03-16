@@ -4,6 +4,9 @@ import ReduceWithoutInitialValueError, {
 } from "./async/array/errors/reduce_without_initial_value";
 import Sleep from "./async/sleep/sleep";
 import EsLintConfigs from "./linter/eslint_configs";
+import QueueAlreadyClosedError from "./queue/errors/queue_already_closed";
+import QueueAlreadyRunningError from "./queue/errors/queue_already_running";
+import Queue from "./queue/queue";
 import StringUtils from "./types/string_utils";
 
 /**
@@ -18,5 +21,8 @@ export {
     ReduceWithoutInitialValueError,
     UndefinedInitialValueCause,
     Sleep,
-    StringUtils
+    StringUtils,
+    Queue,
+    QueueAlreadyRunningError,
+    QueueAlreadyClosedError
 };

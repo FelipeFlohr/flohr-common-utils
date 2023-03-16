@@ -1,20 +1,17 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-var-requires */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const gulp = require("gulp");
 
-function processJson() {
-    return gulp
-        .src("lib/**/*.json", { allowEmpty: true })
-        .pipe(gulp.dest("dist"));
-}
-
 function processPackageFiles() {
-    return gulp
-        .src(["package.json", "LICENSE", "README.md", ".npmrc"], { allowEmpty: true })
-        .pipe(gulp.dest("dist"));
+    return gulp.src([
+        "./package.json",
+        "./.npmrc",
+        "./README.md",
+        "./LICENSE"
+    ], { allowEmpty: true })
+        .pipe(gulp.dest("./dist"));
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
-    processJson,
-    processPackageFiles,
+    processPackageFiles
 };
