@@ -329,7 +329,6 @@ export default class Queue<T, U> {
      */
     private checkIsRunning(): void {
         const interval = setInterval(async () => {
-            console.log(this.processingEntities.getLength() === 0 && this.isRunning);
             if (this.processingEntities.getLength() === 0 && this.isRunning) {
                 await this.close();
                 clearInterval(interval);
