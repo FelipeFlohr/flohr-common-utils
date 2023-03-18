@@ -294,7 +294,7 @@ export default class Queue<T, U> {
                 );
             }
             if (this.processingEntities.getLength() === 0) {
-                if (!this.keepAlive) {
+                if (!this.keepAlive && !this.isRunning) {
                     await this.close();
                 }
                 if (this.onEnd) {
@@ -314,9 +314,7 @@ export default class Queue<T, U> {
      * @author Felipe Matheus Flohr
      */
     private async waitForProcessesBeResolved(): Promise<void> {
-        return await Sleep.until(
-            () => this.processingEntities.getLength() === 0
-        );
+        return await Sleep.until(() => this.processingEntities.getLength() === 0, 150);
     }
 
     /**
@@ -331,7 +329,8 @@ export default class Queue<T, U> {
      */
     private checkIsRunning(): void {
         const interval = setInterval(async () => {
-            if (this.processingEntities.getLength() === 0) {
+            console.log(this.processingEntities.getLength() === 0 && this.isRunning);
+            if (this.processingEntities.getLength() === 0 && this.isRunning) {
                 await this.close();
                 clearInterval(interval);
             }
