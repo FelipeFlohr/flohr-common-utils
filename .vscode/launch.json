@@ -13,28 +13,8 @@
             ],
             "program": "${workspaceFolder}\\lib\\index.ts",
             "outFiles": [
-                "${workspaceFolder}/**/*.js"
+                "${workspaceFolder}/dist/**/*.js"
             ]
         },
-        {
-            "name": "Debug copy-files",
-            "type": "pwa-node",
-            "request": "launch",
-            "runtimeExecutable": "node",
-            "runtimeArgs": [
-                "--nolazy",
-                "-r",
-                "ts-node/register/transpile-only"
-            ],
-            "args": [
-                "build/copy_files.ts"
-            ],
-            "cwd": "${workspaceRoot}",
-            "internalConsoleOptions": "openOnSessionStart",
-            "skipFiles": [
-                "<node_internals>/**",
-                "node_modules/**"
-            ]
-        }
     ]
 }

@@ -123,8 +123,8 @@ export default class Queue<T, U> {
         this.maxResolvingPromises = maxResolvingPromises;
         this.keepAlive = keepAlive;
 
-        this.setQueuedEntitiesAddCallback();
-        this.setProcessingEntitiesRemoveCallback();
+        this.setQueuedEntitiesCallbacks();
+        this.setProcessingEntitiesCallbacks();
     }
 
     public get isRunning(): boolean {
@@ -147,18 +147,19 @@ export default class Queue<T, U> {
      * @since 13/03/2023
      * @author Felipe Matheus Flohr
      */
-    public add(...items: T[]): void;
+    public add(items: T[]): void;
     public add(items: T | T[]): void {
+        const id = Unique.id();
         if (Array.isArray(items)) {
             for (const item of items) {
                 this.queuedEntities.add({
-                    id: Unique.id(),
+                    id: id,
                     data: item,
                 });
             }
         } else {
             this.queuedEntities.add({
-                id: Unique.id(),
+                id: id,
                 data: items,
             });
         }
@@ -255,7 +256,7 @@ export default class Queue<T, U> {
      * @since 13/03/2023
      * @author Felipe Matheus Flohr
      */
-    private setQueuedEntitiesAddCallback() {
+    private setQueuedEntitiesCallbacks() {
         this.queuedEntities.onAdd = () => {
             if (
                 this.processingEntities.getLength() < this.maxResolvingPromises
@@ -275,7 +276,12 @@ export default class Queue<T, U> {
      * @since 13/03/2023
      * @author Felipe Matheus Flohr
      */
-    private setProcessingEntitiesRemoveCallback() {
+    private setProcessingEntitiesCallbacks() {
+        this.processingEntities.onAdd = async (item) => {
+            if (this.isRunning) {
+                await this.processItem(item);
+            }
+        };
         this.processingEntities.onRemove = async () => {
             if (
                 this.processingEntities.getLength() <

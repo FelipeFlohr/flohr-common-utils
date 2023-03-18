@@ -1,6 +1,6 @@
 {
     "name": "@felipeflohr/flohr-common-utils",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Utility classes for use in personal projects",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/@FelipeFlohr",
